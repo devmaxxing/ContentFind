@@ -15,7 +15,7 @@ type PlatformChannelFormProps = {
 };
 
 export default function PlatformChannelForm({
-  initialPlatform = "youtube",
+  initialPlatform = "twitch",
   initialChannelId = "",
 }: PlatformChannelFormProps) {
   const [platform, setPlatform] = useState(initialPlatform);
@@ -28,6 +28,7 @@ export default function PlatformChannelForm({
       const hostname = url.hostname.replace("www.", "");
       let videoId = "";
       let channel = "";
+      /* Commenting out YouTube logic
       if (hostname.includes("youtube.com") || hostname.includes("youtu.be")) {
         if (url.pathname === "/watch") {
           videoId = url.searchParams.get("v") || "";
@@ -48,7 +49,8 @@ export default function PlatformChannelForm({
           }
         }
         return { platform: "youtube", channelId: channel, videoId };
-      } else if (hostname.includes("twitch.tv")) {
+      } else */
+      if (hostname.includes("twitch.tv")) {
         const pathParts = url.pathname.split("/").filter((part) => part !== "");
         if (pathParts[0] === "videos") {
           videoId = pathParts[1] || "";
@@ -108,7 +110,7 @@ export default function PlatformChannelForm({
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="youtube">YouTube</SelectItem>
+            {/* <SelectItem value="youtube">YouTube</SelectItem> */}
             <SelectItem value="twitch">Twitch</SelectItem>
           </SelectContent>
         </Select>
