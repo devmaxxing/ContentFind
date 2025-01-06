@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_2416e158776f4e0e9dab01610b9bee37 }}/contentfind:${{ github.sha }}
-        file: ./Dockerfile
+        file: ./api-server/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
