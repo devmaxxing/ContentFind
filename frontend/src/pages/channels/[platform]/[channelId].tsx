@@ -564,7 +564,7 @@ export default function ChannelPage() {
                   <p className="text-sm text-gray-500">
                     Last Updated: {lastUpdatedDate.toLocaleDateString()}
                   </p>
-                  {lastUpdatedDate &&
+                  {/* {lastUpdatedDate &&
                     Date.now() - lastUpdatedDate.getTime() >
                       7 * 24 * 60 * 60 * 1000 && (
                       <Button
@@ -575,7 +575,7 @@ export default function ChannelPage() {
                       >
                         Re-index
                       </Button>
-                    )}
+                    )} */}
                 </div>
               )}
 

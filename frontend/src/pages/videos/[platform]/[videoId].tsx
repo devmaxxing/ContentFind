@@ -143,7 +143,7 @@ export default function VideoPage() {
         ) // Modified line
           .then((response) => response.json())
           .then((data) => {
-            setClips(data);
+            setClips(data || []);
           })
           .catch(() => {
             setClips([]);
@@ -445,7 +445,7 @@ export default function VideoPage() {
               <div>
                 <h2 className="text-xl font-semibold mb-3">Clips</h2>
                 <div className="h-[300px] overflow-y-auto pr-4 space-y-4">
-                  {clips.length > 0 ? (
+                  {clips && clips.length > 0 ? (
                     clips.map((clip, index) => (
                       <div
                         key={index}
