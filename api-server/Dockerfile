@@ -5,12 +5,11 @@ WORKDIR /app
 # Install required build tools
 RUN apk add --no-cache git
 
-# Copy go mod files
-COPY go.mod go.sum ./
-RUN go mod download
-
-# Copy source code
+# Copy source code (relative to api-server directory)
 COPY . .
+
+# Download dependencies
+RUN go mod download
 
 # Build statically linked binary
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o api-server .
@@ -21,7 +20,6 @@ WORKDIR /app
 
 # Copy binary from builder
 COPY --from=builder /app/api-server .
-COPY .env .
 
 # Set up non-root user
 USER 1000:1000
